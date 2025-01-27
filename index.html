@@ -10,12 +10,12 @@
 
     <style>
       .mainpageWelcome {
-  position: absolute;
+        position:absolute;
   top: 50%; /* Adjust as needed */
   left: 50%;
   transform: translate(-50%, -50%);
   color: black;
-  z-index: 10; /* Ensures it's on top of the images */
+  /* Ensures it's on top of the images */
   font-family:'Bauhaus 93';
   font-size:90px;
 }
@@ -30,7 +30,7 @@
 
       .mobileImage {
         position:relative;
-        display: none;
+        display: inline;
         max-width: 90%;
         margin-left:5%;
         opacity: 0.5; /* Hide second image (mobile image) by default */
@@ -68,18 +68,21 @@
       @media (max-width: 768px) and (orientation: landscape) {
         /* Remove the fixed-top class and make the navbar non-fixed */
         .navbar {
-          position: static !important; /* Override the fixed-top class */
+          position: static !important;
+          z-index: 10; /* Override the fixed-top class */
         }
         .desktopImage{
-            display:block;
-            
+            display:inline;
+            z-index: -3;
         }
         .mobileImage{
             display:none;
         }
         .mainpageWelcome{
+            position:inline;
             transform: translate(-70%, -40%);
             font-size:40px;
+            z-index: -1;
         }
       }
     </style>
