@@ -9,34 +9,50 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <style>
-      /* Media query for landscape mode on mobile */
-      @media (max-width: 768px) and (orientation: landscape) {
-        /* Remove the fixed-top class and make the navbar non-fixed */
-        .navbar {
-          position: static !important; /* Override the fixed-top class */
+      /* For smaller screens, place the login button to the left of the hamburger */
+      @media (max-width: 768px) {
+        .navbar-toggler {
+          margin-left: 10px; /* Ensure there's a little space between login button and hamburger */
         }
+
+        .login-btn-container {
+          display: flex;
+          margin-left: 8px; /* Place it before the hamburger */
+        }
+        .dropdown-menu {
+            width:95%;
+        }
+        
       }
 
-      /* Optional: Narrow dropdown in mobile */
+      /* For larger screens (desktop), place the login button on the far right */
+      @media (min-width: 769px) {
+        .login-btn-container {
+          margin-left: auto; /* Push the login button to the far right */
+        }
+        
+      }
+
+      /* Media query to make the navbar non-fixed on mobile in landscape orientation */
       @media (max-width: 768px) and (orientation: landscape) {
-        .dropdown-menu {
-          width: 95%; /* Adjust this value to your desired width */
+        .navbar.fixed-top {
+          position: static !important; /* Override fixed-top to make it non-fixed in landscape */
         }
       }
-      
     </style>
-    
+
     <title>Better Vball</title>
   </head>
   <body style="height:2000px;">
     <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
+      <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <a href="#" class="navbar-brand mb-0 h1 align-items-center d-flex mx-auto">
         <img class="d-line-block align-top" src="logo.png" width="30px" height="30">
         YDC Volleyball
       </a>
-      <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav" style="padding-left: 20px;">
           <li class="nav-item">
@@ -73,6 +89,13 @@
             </ul>
           </li>
         </ul>
+      </div>
+
+      <!-- Login Button Container -->
+      <div class="login-btn-container">
+        <button type="submit" class="btn">
+          <img src="logout.svg" width="30" height="30">
+        </button>
       </div>
     </nav>
 
