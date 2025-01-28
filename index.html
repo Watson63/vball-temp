@@ -24,6 +24,7 @@ table {
     border-collapse: separate;
     text-indent: initial;
     border-spacing: 2px;
+    margin: 0 auto;
 }
         h1{
             
@@ -42,7 +43,7 @@ table {
 
       .mobileImage {
         position:relative;
-        display: inline;
+        display:inline;
         max-width: 90%;
         margin-left:5%;
         /* Hide second image (mobile image) by default */
@@ -52,7 +53,7 @@ table {
       
 
       /* On mobile devices, hide the first image and show the second image */
-      @media (max-width: 768px) {
+      @media (max-width: 837px) {
         
         .desktopImage {
           display: none; /* Hide desktop image on mobile */
@@ -65,11 +66,24 @@ table {
         h1{
             font-size: 200%;
         }
+        /* Hide Win % and Points columns */
+        th:nth-child(5), th:nth-child(6), td:nth-child(5), td:nth-child(6) {
+            display: none;
+        }
         
+        /* Adjust table width to 300px */
+        table {
+            width: 90% !important;
+            margin: 0 auto;
+        }
+        th, td {
+            font-size: 12px;  /* Adjust font size to fit content */
+        }
+    
       }
 
       /* On desktop, show the first image and hide the second image */
-      @media (min-width: 769px) {
+      @media (min-width: 837px) {
         .desktopImage {
           display: inline;/* Show desktop image */
         }
@@ -80,9 +94,23 @@ table {
         h1{
             font-size:60px;
         }
-        
+        .navbar{
+            height: 15%;
+            font-size:19px;
+        }
+        .navbar-brand{
+            font-size: 35px;
+        }
+        .d-line-block {
+            height: 45px;
+            width: 45px;
+        }
+        #logoutButton {
+            width: 50px;
+            height: 50px;
+        }
       }
-      @media (max-width: 768px) and (orientation: landscape) {
+      @media (max-width: 837px) and (orientation: landscape) {
         /* Remove the fixed-top class and make the navbar non-fixed */
         .navbar {
           position: static !important;
@@ -152,7 +180,7 @@ table {
       <!-- Login Button Container -->
       <div class="login-btn-container">
         <button type="submit" class="btn">
-          <img src="logout.svg" width="30" height="30" style="padding-left: 8px;">
+          <img src="logout.svg" id="logoutButton" width="30" height="30" style="padding-left: 8px;">
         </button>
       </div>
     </nav>
@@ -165,9 +193,9 @@ table {
 </div>
 <br>
 <br>
-<h1>Standings</h1>
+<h1>Current Standings</h1>
 <div >
-    <table style="width: 90%; margin-right:5%; margin-left:5%" id="Table1">
+    <table id="Table1">
         <thead>
           <tr>
             <th>Team</th>
