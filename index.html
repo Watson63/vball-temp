@@ -375,7 +375,7 @@ align-items: center; margin-top: 50px;">
     <div id="schedule-container"></div>
   </div>
   <div class="dailyCalendar">
-    <div class="weekly-calendar-header">Today</div>
+    <div class="weekly-calendar-header">Schedule</div>
     <div id="daily-schedule-container"></div>
 </div>
 </div>
@@ -511,40 +511,61 @@ function renderWeeklySchedule() {
     });
 }
 
-function renderDailySchedule () {
-const scheduleContainer = document.getElementById('daily-schedule-container');
-scheduleContainer.innerHTML = ''; // Clear existing content
+const tomorrowDate = [];
 
-todayDate.forEach((date) => {
-const dayContainer = document.createElement('div');
-dayContainer.classList.add('day');
+todayDate.push(currentDate.toISOString().split('T')[0]); // Get today's date
 
-// Get the day name (e.g., Monday, Tuesday, etc.)
-const day = new Date(date);
-const dayName = day.toLocaleString('en-US', { weekday: 'long' }); // This will get the full day name (e.g., "Monday")
+const tomorrow = new Date(currentDate);
+tomorrow.setDate(currentDate.getDate() + 1); // Set to tomorrow's date
+tomorrowDate.push(tomorrow.toISOString().split('T')[0]); // Get tomorrow's date
 
-// Add the day title (e.g., Monday, Tuesday, etc.)
+function renderDailySchedule() {
+    const scheduleContainer = document.getElementById('daily-schedule-container');
+    scheduleContainer.innerHTML = ''; // Clear existing content
 
+    // Function to display the match schedule for a given date
+    function renderDaySchedule(date, dayName) {
+        const dayContainer = document.createElement('div');
+        dayContainer.classList.add('day');
+        
+        // Add the day title (e.g., "Today", "Tomorrow")
+        const dayTitle = document.createElement('div');
+        dayTitle.classList.add('day-title');
+        dayTitle.textContent = `Games ${dayName}`;
+        dayContainer.appendChild(dayTitle);
 
-// Check if there are matches for the current date
-if (schedule[date]) {
-    schedule[date].forEach(match => {
-        const matchDiv = document.createElement('div');
-        matchDiv.classList.add('match');
-        matchDiv.textContent = match;
-        dayContainer.appendChild(matchDiv);
-    });
-} else {
-    const noMatchDiv = document.createElement('div');
-    noMatchDiv.classList.add('no-matches');
-    noMatchDiv.textContent = 'No matches';
-    dayContainer.appendChild(noMatchDiv);
+        // Check if there are matches for the given date
+        if (schedule[date]) {
+            schedule[date].forEach(match => {
+                const matchDiv = document.createElement('div');
+                matchDiv.classList.add('match');
+                matchDiv.textContent = match;
+                dayContainer.appendChild(matchDiv);
+            });
+        } else {
+            const noMatchDiv = document.createElement('div');
+            noMatchDiv.classList.add('no-matches');
+            noMatchDiv.textContent = 'No matches';
+            dayContainer.appendChild(noMatchDiv);
+        }
+
+        // Append the day container to the schedule
+        scheduleContainer.appendChild(dayContainer);
+    }
+
+    // Render today's schedule
+    const today = new Date();
+    const todayName = "Today"// Get today's name
+    renderDaySchedule(todayDate[0], todayName);
+
+    // Render tomorrow's schedule
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1); // Get tomorrow's date
+    const tomorrowName = "Tomorow";
+    renderDaySchedule(tomorrowDate[0], tomorrowName);
 }
 
-// Append the day container to the schedule
-scheduleContainer.appendChild(dayContainer);
-});
-}
+
 
 
 // Render the schedule
