@@ -12,6 +12,15 @@
       body{
         background-color: rgb(172, 172, 172);
       }
+      .dailyCalendar {
+            width: 90%;
+            max-width: 800px; /* Increase width for horizontal layout */
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            
+        }
         th,td{
             color: rgb(48, 48, 48);
     border: 3px solid white;
@@ -57,12 +66,19 @@ table {
 
       /* On mobile devices, hide the first image and show the second image */
       @media (max-width: 837px) {
-        
+        .dailyCalendar{
+          display:inline;
+        }
+        .weekly-calendar{
+          display:none;
+        }
         .desktopImage {
+          
           display: none; /* Hide desktop image on mobile */
         }
 
         .mobileImage {
+          margin-top: 50px;
             display: inline;
              /* Show mobile image on mobile */
         }
@@ -87,6 +103,9 @@ table {
 
       /* On desktop, show the first image and hide the second image */
       @media (min-width: 837px) {
+        .dailyCalendar{
+          display: none;
+        }
         .desktopImage {
           display: inline;/* Show desktop image */
         }
@@ -114,12 +133,19 @@ table {
         }
       }
       @media (max-width: 837px) and (orientation: landscape) {
+        .dailyCalendar{
+          display:none;
+        }
+        .weekly-calendar{
+          display:inline;
+        }
         /* Remove the fixed-top class and make the navbar non-fixed */
         .navbar {
           position: static !important;
           z-index: 10; /* Override the fixed-top class */
         }
         .desktopImage{
+           
             display:inline;
             z-index: -3;
         }
@@ -348,6 +374,10 @@ align-items: center; margin-top: 50px;">
     <div class="weekly-calendar-header">Weekly Schedule</div>
     <div id="schedule-container"></div>
   </div>
+  <div class="dailyCalendar">
+    <div class="weekly-calendar-header">Today</div>
+    <div id="daily-schedule-container"></div>
+</div>
 </div>
 
 <script src="masterSchedule.js"></script>
@@ -420,18 +450,29 @@ function checkClinched() {
 // Get the current date
 const currentDate = new Date();
 
+const currentDay= new Date(currentDate);
+currentDay.setDate(currentDate.getDate());
 // Get the start of the current week (Monday)
 const startOfWeek = new Date(currentDate);
 startOfWeek.setDate(currentDate.getDate() - currentDate.getDay() + 1); // Adjust to Monday
 
+const setDay = new Date(currentDate);
+setDay.setDate(setDay.getDay()-2);
+
+
 // Get the dates for the entire current week (Monday to Sunday)
-const weekDates = [];
+const dayDates = [];
 for (let i = 0; i < 4; i++) {
     const date = new Date(startOfWeek);
     date.setDate(startOfWeek.getDate() + i);
-    weekDates.push(date.toISOString().split('T')[0]); // Format as 'YYYY-MM-DD'
+    dayDates.push(date.toISOString().split('T')[0]); // Format as 'YYYY-MM-DD'
 }
-
+const todayDate = [];
+for (let i = 0; i < 1; i++) {
+    const date = new Date(currentDate);
+    date.setDate(currentDate.getDate() + i);
+    todayDate.push(date.toISOString().split('T')[0]); // Format as 'YYYY-MM-DD'
+}
 // Prepare the week days object (Monday to Sunday)
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday'];
 
@@ -440,7 +481,7 @@ function renderWeeklySchedule() {
     const scheduleContainer = document.getElementById('schedule-container');
     scheduleContainer.innerHTML = ''; // Clear existing content
 
-    weekDates.forEach((date, index) => {
+    dayDates.forEach((date, index) => {
         const dayContainer = document.createElement('div');
         dayContainer.classList.add('day');
 
@@ -470,8 +511,45 @@ function renderWeeklySchedule() {
     });
 }
 
+function renderDailySchedule () {
+const scheduleContainer = document.getElementById('daily-schedule-container');
+scheduleContainer.innerHTML = ''; // Clear existing content
+
+todayDate.forEach((date) => {
+const dayContainer = document.createElement('div');
+dayContainer.classList.add('day');
+
+// Get the day name (e.g., Monday, Tuesday, etc.)
+const day = new Date(date);
+const dayName = day.toLocaleString('en-US', { weekday: 'long' }); // This will get the full day name (e.g., "Monday")
+
+// Add the day title (e.g., Monday, Tuesday, etc.)
+
+
+// Check if there are matches for the current date
+if (schedule[date]) {
+    schedule[date].forEach(match => {
+        const matchDiv = document.createElement('div');
+        matchDiv.classList.add('match');
+        matchDiv.textContent = match;
+        dayContainer.appendChild(matchDiv);
+    });
+} else {
+    const noMatchDiv = document.createElement('div');
+    noMatchDiv.classList.add('no-matches');
+    noMatchDiv.textContent = 'No matches';
+    dayContainer.appendChild(noMatchDiv);
+}
+
+// Append the day container to the schedule
+scheduleContainer.appendChild(dayContainer);
+});
+}
+
+
 // Render the schedule
 renderWeeklySchedule();
+renderDailySchedule();
 sortTable();
 tablebrains();
   </script>
