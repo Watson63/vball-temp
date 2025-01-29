@@ -1,0 +1,43 @@
+
+
+h1{ 
+    font-family: "Bauhaus 93";
+    text-align: center;
+}
+
+/* On desktop, show the first image and hide the second image */
+@media (min-width: 837px) {
+.desktopImage {
+  display: inline;/* Show desktop image */
+}
+
+.mobileImage {
+  display: none; /* Hide mobile image */
+}
+h1{
+    font-size:60px;
+}
+.navbar{
+    height: 15%;
+    font-size:19px;
+}
+.navbar-brand{
+    font-size: 35px;
+}
+.d-line-block {
+    height: 45px;
+    width: 45px;
+}
+#logoutButton {
+    width: 50px;
+    height: 50px;
+}
+}
+@media (max-width: 837px) and (orientation: landscape) {
+/* Remove the fixed-top class and make the navbar non-fixed */
+.navbar {
+  position: static !important;
+  z-index: 10; /* Override the fixed-top class */
+}
+
+}
