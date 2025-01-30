@@ -142,34 +142,7 @@ table {
             height: 50px;
         }
       }
-      @media (max-width: 837px) and (orientation: landscape) {
-        .dailyCalendar{
-          display:none;
-        }
-        .weekly-calendar{
-          display:inline;
-        }
-        /* Remove the fixed-top class and make the navbar non-fixed */
-        .navbar {
-          position: static !important;
-          z-index: 10; /* Override the fixed-top class */
-        }
-        .desktopImage{
-           
-            display:inline;
-            z-index: -3;
-        }
-        .mobileImage{
-            display:none;
-        }
-        th:nth-child(5), th:nth-child(6), td:nth-child(5), td:nth-child(6) {
-            display: block;
-        }
-        .logoIcons{
-  width: 40%;
-  
-          }
-      }
+      
       .weekly-calendar {
             width: 90%;
             max-width: 800px; /* Increase width for horizontal layout */
@@ -245,6 +218,34 @@ table {
   
 }
 }
+      @media (max-width: 837px) and (orientation: landscape) {
+        .dailyCalendar{
+          display:none;
+        }
+        .weekly-calendar{
+          display:inline;
+        }
+        /* Remove the fixed-top class and make the navbar non-fixed */
+        .navbar {
+          position: static !important;
+          z-index: 10; /* Override the fixed-top class */
+        }
+        .desktopImage{
+           
+            display:inline;
+            z-index: -3;
+        }
+        .mobileImage{
+            display:none;
+        }
+        th:nth-child(5), th:nth-child(6), td:nth-child(5), td:nth-child(6) {
+            display: block;
+        }
+        .logoIcons{
+  width: 30%;
+  
+          }
+      }
     </style>
 
     <title>Better Vball</title>
