@@ -454,7 +454,7 @@ const currentDay= new Date(currentDate);
 currentDay.setDate(currentDate.getDate());
 // Get the start of the current week (Monday)
 const startOfWeek = new Date(currentDate);
-startOfWeek.setDate(currentDate.getDate() - currentDate.getDay() + 1); // Adjust to Monday
+startOfWeek.setDate(currentDate.getDate() - currentDate.getDay()); // Adjust to Monday
 
 const setDay = new Date(currentDate);
 setDay.setDate(setDay.getDay()-2);
@@ -468,11 +468,11 @@ for (let i = 0; i < 4; i++) {
     dayDates.push(date.toISOString().split('T')[0]); // Format as 'YYYY-MM-DD'
 }
 const todayDate = [];
-for (let i = 0; i < 1; i++) {
-    const date = new Date(currentDate);
-    date.setDate(currentDate.getDate() + i);
-    todayDate.push(date.toISOString().split('T')[0]); // Format as 'YYYY-MM-DD'
-}
+
+const date1 = new Date(currentDate);
+date1.setDate(currentDate.getDate()-1);
+todayDate.push(date1.toISOString().split('T')[0]); // Format as 'YYYY-MM-DD'
+
 // Prepare the week days object (Monday to Sunday)
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday'];
 
@@ -516,7 +516,7 @@ const tomorrowDate = [];
 todayDate.push(currentDate.toISOString().split('T')[0]); // Get today's date
 
 const tomorrow = new Date(currentDate);
-tomorrow.setDate(currentDate.getDate() + 1); // Set to tomorrow's date
+tomorrow.setDate(currentDate.getDate()); // Set to tomorrow's date
 tomorrowDate.push(tomorrow.toISOString().split('T')[0]); // Get tomorrow's date
 
 function renderDailySchedule() {
