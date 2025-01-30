@@ -10,7 +10,7 @@
     <link rel="stylesheet" href = "style.css">
     <style>
       body{
-        background-color: rgb(172, 172, 172);
+        background-image: linear-gradient(to right, rgba(172,172,172,1) 70%, rgba(172,172,172,0.1));
       }
       .dailyCalendar {
             width: 90%;
@@ -26,17 +26,20 @@
     border: 3px solid white;
     text-align: left;
     padding: 8px;
+    border-radius: 3px;
         }
         td {
     display: table-cell;
     vertical-align: inherit;
     unicode-bidi: isolate;
+
 }
 table {
     border-collapse: separate;
     text-indent: initial;
     border-spacing: 2px;
     margin: 0 auto;
+    
 }
         h1{
             
@@ -50,6 +53,8 @@ table {
         display: inline;
         max-width: 90%;
         margin-left:5%;
+        box-shadow: 1px 4px 10px rgb(0, 0, 0,0.6);
+        border-radius: 4px;
         
       }
 
@@ -58,6 +63,9 @@ table {
         display:inline;
         max-width: 90%;
         margin-left:5%;
+        box-shadow: 1px 4px 10px rgb(0, 0, 0,0.6);
+        border-radius: 4px;
+        
         /* Hide second image (mobile image) by default */
       }
       
@@ -68,6 +76,7 @@ table {
       @media (max-width: 837px) {
         .dailyCalendar{
           display:inline;
+          box-shadow: 1px 4px 10px rgb(0, 0, 0,0.6);
         }
         .weekly-calendar{
           display:none;
@@ -94,6 +103,7 @@ table {
         table {
             width: 90% !important;
             margin: 0 auto;
+
         }
         th, td {
             font-size: 12px;  /* Adjust font size to fit content */
@@ -160,7 +170,7 @@ table {
             width: 90%;
             max-width: 800px; /* Increase width for horizontal layout */
             background-color: #fff;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 1px 4px 10px rgb(0, 0, 0,0.6);
             padding: 20px;
             border-radius: 8px;
             
@@ -203,11 +213,39 @@ table {
             color: #888;
             font-style: italic;
         }
+        .wrapper {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  margin-left: 3%;
+}
+.logoIcons {
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+    padding: auto;
+    
+    
+}
+.logoIcons:hover{
+    width: 90%;
+    transition-duration: 2s;
+}
+@media (max-width: 860px){
+            .wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-left: 10%;
+}
+.logoIcons{
+  width: 40%;
+  
+}
+}
     </style>
 
     <title>Better Vball</title>
   </head>
-  <body style="height:2000px;">
+  <body >
     <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
       <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler navbar-toggler-outline-*" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -269,6 +307,32 @@ table {
     <img class="desktopImage" src="mainpage.jpg" alt="Main page image">
     <img class="mobileImage" src="frontImageMobile.jpg" alt="Mobile page image">
 </div>
+<br>
+<div class="wrapper">
+  <div><a href="volleybrawlers.html"><img src="logo_brawlers_glow.png" class="logoIcons" ></a></div>
+  <div><a href="chargers.html"><img src="logo_chargers_glow.png" class="logoIcons"></a></div>
+  <div><a href="grizzlies.html"><img src="logo_grizzlies_glow.png" class="logoIcons"></a></div>
+  <div><a href="jets.html"><img src="logo_jets_glow.png" class="logoIcons"></a></div>
+  <div><a href="patriots.html"><img src="logo_patriots_glow.png" alt="patriots logo" class="logoIcons"></a></div>
+  <div><a href="royals.html"><img src="logo_royals_glow.png" alt="royals logo" class="logoIcons"></a></div>
+  <div><a href="spartans.html"><img src="logo_spartans_glow.png" alt="spartans logo" class="logoIcons"></a></div>
+  <div><a href="tempests.html"><img src="logo_tempest_glow.png" alt="tempests logo" class="logoIcons"></a></div>
+</div>
+<br>
+
+<div style="display: flex;
+justify-content: center;
+align-items: center; margin-top: 50px;">
+  <div class="weekly-calendar" >
+    <div class="weekly-calendar-header">Weekly Schedule</div>
+    <div id="schedule-container"></div>
+  </div>
+  <div class="dailyCalendar">
+    <div class="weekly-calendar-header">Schedule</div>
+    <div id="daily-schedule-container"></div>
+</div>
+</div>
+<br>
 <br>
 <br>
 <h1>Current Standings</h1>
@@ -364,21 +428,10 @@ table {
     </table>
     
 </div>
-<br>
-<br>
-<br>
-<div style="display: flex;
-justify-content: center;
-align-items: center; margin-top: 50px;">
-  <div class="weekly-calendar" >
-    <div class="weekly-calendar-header">Weekly Schedule</div>
-    <div id="schedule-container"></div>
-  </div>
-  <div class="dailyCalendar">
-    <div class="weekly-calendar-header">Schedule</div>
-    <div id="daily-schedule-container"></div>
-</div>
-</div>
+
+
+
+  <p style="text-align: right; margin-top: 10%; margin-right:1%;"><i>Powered by:</i> ZKL Corporation</p>
 
 <script src="masterSchedule.js"></script>
 <script>
@@ -454,10 +507,10 @@ const currentDay= new Date(currentDate);
 currentDay.setDate(currentDate.getDate());
 // Get the start of the current week (Monday)
 const startOfWeek = new Date(currentDate);
-startOfWeek.setDate(currentDate.getDate() - currentDate.getDay()); // Adjust to Monday
+startOfWeek.setDate(currentDate.getDate() - currentDate.getDay()+1); // Adjust to Monday
 
 const setDay = new Date(currentDate);
-setDay.setDate(setDay.getDay()-2);
+setDay.setDate(setDay.getDay());
 
 
 // Get the dates for the entire current week (Monday to Sunday)
@@ -470,7 +523,7 @@ for (let i = 0; i < 4; i++) {
 const todayDate = [];
 
 const date1 = new Date(currentDate);
-date1.setDate(currentDate.getDate()-1);
+date1.setDate(currentDate.getDate());
 todayDate.push(date1.toISOString().split('T')[0]); // Format as 'YYYY-MM-DD'
 
 // Prepare the week days object (Monday to Sunday)
@@ -516,7 +569,7 @@ const tomorrowDate = [];
 todayDate.push(currentDate.toISOString().split('T')[0]); // Get today's date
 
 const tomorrow = new Date(currentDate);
-tomorrow.setDate(currentDate.getDate()); // Set to tomorrow's date
+tomorrow.setDate(currentDate.getDate()+1); // Set to tomorrow's date
 tomorrowDate.push(tomorrow.toISOString().split('T')[0]); // Get tomorrow's date
 
 function renderDailySchedule() {
