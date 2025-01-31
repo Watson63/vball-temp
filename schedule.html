@@ -10,11 +10,9 @@
         <title>Better Vball</title>
         <link rel="stylesheet" href = "style.css">
         <style>
-            body{
-                background-color: #f4f6f9; 
-            }
+            
             header{
-                background-color: #f4f6f9;
+                background-image: linear-gradient(to right, rgba(172,172,172,1) 70%, rgba(172,172,172,0.1));
 
                 justify-content: center;
                 align-items: center;
@@ -27,7 +25,7 @@
             }
 .calendarBody {
   font-family: Arial, sans-serif;
-  background-color: #f4f6f9;
+  background-image: linear-gradient(to right, rgba(172,172,172,1) 70%, rgba(172,172,172,0.1));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,6 +85,7 @@
   .calendar {
     width: 100%;
     margin: 0 10px;
+    box-shadow: 5px 5px 10px black;
   }
   .calendar-weekdays div {
     font-size: 11px;
@@ -98,8 +97,9 @@
 @media (min-width:860px) {
     .calendar {
         width: 80%;
-        
+        border-radius: 30px;
         background-color: white;
+        box-shadow: 5px 5px 10px black;
     }
     .calendar-weekdays div, .calendar-dates div {
   text-align: center;
@@ -110,6 +110,12 @@
 header{
     margin-top: 120px;
 }
+}
+@media (max-width:860px){
+    .calendar {
+        box-shadow: 5px 5px 10px black;
+        border-radius: 15px;
+    }
 }
 h1{
             
@@ -158,8 +164,20 @@ h1{
 #alertMessage {
     color: black;
 }
+body{
+                background-image: linear-gradient(to right, rgba(172,172,172,1) 75%, rgba(172,172,172,0.1));
+            }
         </style>
     </head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QPYWJDV841"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QPYWJDV841');
+</script>
     <body>
         <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
             <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler navbar-toggler-outline-*" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
