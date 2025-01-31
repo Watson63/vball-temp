@@ -8,15 +8,454 @@
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <title>Better Vball</title>
+        <style>
+            body{
+                background-image: linear-gradient(to right, rgba(172,172,172,1) 70%, rgba(172,172,172,0.1));
+            }
+            .victorBadge {
+                background-color: rgba(255, 255, 255,0.8);
+                width: 70%;
+                height: 400px;
+                margin: 10px;
+                border-radius: 30px;
+                box-shadow: 5px 10px 10px black;
+            }
+            .victorBadge:hover {
+                width:80%;
+                background-color: rgba(255, 255, 255,1);
+                transition-duration: 1.5s;
+            }
+            .victorHeader {
+                font-size: 30px;
+                text-align: center;
+                font-weight: bold;
+            }
+            .victorLogo1 {
+                position:inherit;
+                width:50%;
+            }
+            .victorLogo2 {
+                width:90%;
+            }
+            .victorLogo3 {
+                width: 60%;
+            }
+            .victorLogo4 {
+                width: 60%;
+            }
+            .victorWrapper {
+                display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-left: 9%;
+            }
+            h1{
+            
+            font-family: "Bauhaus 93";
+            text-align: center;
+        }
+            th,td{
+            color: rgb(48, 48, 48);
+    border: 3px solid white;
+    text-align: left;
+    padding: 8px;
+    border-radius: 3px;
+        }
+        
+        td {
+    display: table-cell;
+    vertical-align: inherit;
+    unicode-bidi: isolate;
+
+}
+table {
+    border-collapse: separate;
+    text-indent: initial;
+    border-spacing: 2px;
+    margin: 0 auto;
+    
+}
+@media (max-width: 837px){
+    table {
+            width: 90% !important;
+           
+
+        }
+        th, td {
+            font-size: 12px;  /* Adjust font size to fit content */
+        }
+        th:nth-child(5), th:nth-child(6), td:nth-child(5), td:nth-child(6) {
+            display: none;
+        }
+    .heading1 {
+        margin-top: 70px;
+    }
+    .victorWrapper {
+        grid-template-columns: repeat(1, 1fr);
+        margin-left: 20%;
+    }
+    .victorBadge {
+        height: 300px;
+    }
+}
+@media (min-width: 837px){
+    th,td:hover {
+            border: 5px solid white; 
+            transition-duration: 0.5s;
+        }
+    h1{
+            font-size:60px;
+        }
+        .navbar{
+            height: 15%;
+            font-size:19px;
+        }
+        .navbar-brand{
+            font-size: 35px;
+        }
+        .d-line-block {
+            height: 45px;
+            width: 45px;
+        }
+        #logoutButton {
+            width: 50px;
+            height: 50px;
+        }
+        .heading1 {
+            margin-top: 110px;
+        }
+}
+@media (max-width: 837px) and (orientation: landscape) {
+    .navbar {
+          position: static !important;
+          z-index: 10; /* Override the fixed-top class */
+        }
+   
+   body {
+    background-color: rgba(172,172,172,1);
+   }
+   th:nth-child(5), th:nth-child(6), td:nth-child(5), td:nth-child(6) {
+            display: block;
+        }
+    .heading1 {
+        margin-top: 10px;
+    }
+}
+
+
+        </style>
     </head>
     <body>
-        <h1>Leaderboard</h1>
-        <br>
-        <p>This is still in testing Phase</p>
-        <br>
-        <p><a href="index.html">Click Here</a> to go back</p>
+        <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
+            <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler navbar-toggler-outline-*" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="#" class="navbar-brand mb-0 h1 align-items-center d-flex mx-auto">
+              <img class="d-line-block align-top" src="logo.png" width="30px" height="30">
+              YDC Volleyball
+            </a>
+      
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav" style="padding-left: 20px;">
+                <li class="nav-item">
+                  <a href="index.html" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a href="leaderboard.html" class="nav-link active">Leaderboard</a>
+                </li>
+                <li class="nav-item">
+                  <a href="schedule.html" class="nav-link active">Schedule</a>
+                </li>
+                <li class="nav-item dropdown" style="max-width: 90%;">
+                  <a href="#" class="nav-link active dropdown-toggle" id="mediaNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Gallery
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="mediaNavbarDropdown">
+                    <li><a href="images.html" class="dropdown-item">Images</a></li>
+                    <li><a href="videos.html" class="dropdown-item">Videos</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown" style="max-width: 90%;">
+                  <a href="#" class="nav-link active dropdown-toggle" id="teamNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Teams
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="teamNavbarDropdown">
+                    <li><a href="volleybrawlers.html" class="dropdown-item">Brawlers</a></li>
+                    <li><a href="chargers.html" class="dropdown-item">Chargers</a></li>
+                    <li><a href="grizzlies.html" class="dropdown-item">Grizzlies</a></li>
+                    <li><a href="jets.html" class="dropdown-item">Jets</a></li>
+                    <li><a href="patriots.html" class="dropdown-item">Patriots</a></li>
+                    <li><a href="royals.html" class="dropdown-item">Royals</a></li>
+                    <li><a href="spartans.html" class="dropdown-item">Spartans</a></li>
+                    <li><a href="tempests.html" class="dropdown-item">Tempests</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+      
+            <!-- Login Button Container -->
+            <div class="login-btn-container">
+              <button type="submit" class="btn">
+                <img src="logout.svg" id="logoutButton" width="30" height="30" style="padding-left: 8px;">
+              </button>
+            </div>
+          </nav>
+        
+        
 
 
+<h1 class="heading1">Current Standings</h1>
+<div >
+    <table id="Table1">
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Games Played</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>Win %</th>
+            <th>Points</th>
+            <th>Clinched</th>
+          </tr>
+        </thead>
+        <tbody>
+      
+      <tr>
+        <td id="rteam" class="table-names">Royals</td>
+        <td class="games-played">24</td>
+        <td class="wins">9</td>
+        <td class="losses"></td>
+        <td class="percentage"></td>
+        <td class="points"></td>
+        <td class="clinched"></td>
+      </tr>
+      <tr>
+        <td id="tteam" class="table-names">Tempests</td>
+        <td class="games-played">24</td>
+        <td class="wins">11</td>
+        <td class="losses"></td>
+        <td class="percentage"></td>
+        <td class="points"></td>
+        <td class="clinched"></td>
+      </tr>
+      <tr>
+        <td id="jteam" class="table-names">Jets</td>
+        <td class="games-played">24</td>
+        <td class="wins">16</td>
+        <td class="losses"></td>
+        <td class="percentage"></td>
+        <td class="points"></td>
+        <td class="clinched"></td>
+      </tr>
+      <tr>
+        <td id="pteam" class="table-names">Patriots</td>
+        <td class="games-played">24</td>
+        <td class="wins">3</td>
+        <td class="losses"></td>
+        <td class="percentage"></td>
+        <td class="points"></td>
+        <td class="clinched"></td>
+      </tr>
+      <tr>
+        <td id="cteam" class="table-names">Chargers</td>
+        <td class="games-played">24</td>
+        <td class="wins">18</td>
+        <td class="losses"></td>
+        <td class="percentage"></td>
+        <td class="points"></td>
+        <td class="clinched"></td>
+      </tr>
+      <tr>
+        <td id="bteam" class="table-names">Brawlers</td>
+        <td class="games-played">24</td>
+        <td class="wins">12</td>
+        <td class="losses"></td>
+        <td class="percentage"></td>
+        <td class="points"></td>
+        <td class="clinched"></td>
+      </tr>
+      <tr>
+        <td id="spteam" class="table-names">Spartans</td>
+        <td class="games-played">24</td>
+        <td class="wins">20</td>
+        <td class="losses"></td>
+        <td class="percentage"></td> 
+        <td class="points"></td>
+        <td class="clinched"></td>
+      </tr>
+      <tr>
+        <td id="gteam" class="table-names">Grizzlies</td>
+        <td class="games-played">24</td>
+        <td class="wins">5</td>
+        <td class="losses"></td>
+        <td class="percentage"></td>
+        <td class="points"></td>
+        <td class="clinched"></td>
+      </tr>
+        </tbody>
+  
+    </table>
+    
+</div>
+<br>
+<br>
+<h1>Previous Victors</h1>
+
+<div class="victorWrapper">
+    <div class="victorBadge">
+        <div class="victorHeader">Jets
+            <div class="victorContent"><img src="logo_jets_glow.png" class="victorLogo2">
+                <p class="victorYear">2024</p>
+            </div>
+            
+        </div>
+    </div>
+    <div class="victorBadge">
+        <div class="victorHeader">Volley Brawlers
+            <div class="victorContent">
+                <img src="logo_brawlers_glow.png" class="victorLogo3">
+                <p class="victorYear">2023</p>
+            </div>
+            
+        </div>
+    </div>
+    <div class="victorBadge">
+        <div class="victorHeader">Covid
+            <div class="victorContent">
+                <img src="covid.png" class="victorLogo4">
+                <p class="victorYear">2022</p>
+            </div>
+            
+        </div>
+    </div>
+    <div class="victorBadge">
+        <div class="victorHeader">Covid
+            <div class="victorContent">
+                <img src="covid.png" class="victorLogo4">
+                <p class="victorYear">2021</p>
+            </div>
+        </div>
+    </div>
+    <div class="victorBadge">
+        <div class="victorHeader">Covid
+            <div class="victorContent">
+                <img src="covid.png" class="victorLogo4">
+                <p class="victorYear">2020</p>
+            </div>
+        </div>
+    </div>
+    <div class="victorBadge">
+        <div class="victorHeader">Grizzlies
+            <div class="victorContent">
+                <img src="logo_grizzlies_glow.png" class="victorLogo1">
+                <p class="victorYear">2019</p>
+            </div>
+        </div>
+    </div>
+    <div class="victorBadge">
+        <div class="victorHeader">Grizzlies
+            <div class="victorContent">
+                <img src="logo_grizzlies_glow.png" class="victorLogo1">
+                <p class="victorYear">2018</p>
+            </div>
+        </div>
+    </div>
+    <div class="victorBadge">
+        <div class="victorHeader">Tempests
+            <div class="victorContent">
+                <img src="logo_tempest_glow.png" class="victorLogo1">
+                <p class="victorYear">2017</p>
+            </div>
+        </div>
+    </div>
+    <div class="victorBadge">
+        <div class="victorHeader">Patriots
+            <div class="victorContent">
+                <img src="logo_patriots_glow.png" class="victorLogo2">
+                <p class="victorYear">2016</p>
+            </div>
+        </div>
+    </div>
+    <div class="victorBadge">
+        <div class="victorHeader">Patriots
+            <div class="victorContent">
+                <img src="logo_patriots_glow.png" class="victorLogo2">
+                <p class="victorYear">2015</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+
+        <script>
+               // Function to sort the table
+function sortTable() {
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("Table1");
+    switching = true;
+    while (switching) {
+      switching = false;
+      rows = table.rows;
+      for (i = 1; i < (rows.length - 1); i++) {
+        shouldSwitch = false;
+        x = rows[i].getElementsByTagName("TD")[2];
+        y = rows[i + 1].getElementsByTagName("TD")[2];
+        if (Number(x.innerHTML) < Number(y.innerHTML)) {
+          shouldSwitch = true;
+          break;
+        }
+      }
+      if (shouldSwitch) {
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+      }
+    }
+}
+
+// Function to update table data
+function tablebrains() {
+  const table = document.getElementById("Table1");
+  var rows = table.rows;
+  for (var i = 1; i < rows.length; i++) {
+      let games_played = rows[i].getElementsByClassName("games-played")[0];
+      let wins = rows[i].getElementsByClassName("wins")[0];
+      let losses = rows[i].getElementsByClassName("losses")[0];
+      let points = rows[i].getElementsByClassName("points")[0];
+      let win_percent = rows[i].getElementsByClassName("percentage")[0];
+      let loss_data = Number(games_played.innerHTML) - Number(wins.innerHTML);
+      let percent_data = (Number(wins.innerHTML) / Number(games_played.innerHTML)) * 100 ;
+      points.innerHTML = Number(wins.innerHTML) * 2;
+      losses.innerHTML = loss_data.toFixed(0);
+      win_percent.innerHTML = percent_data.toFixed(2)+"%";
+  }
+  checkClinched();
+}
+
+// Function to check if teams have clinched playoff spots
+function checkClinched() {
+    const table = document.getElementById("Table1");
+    var rows = table.rows;
+    var points = [];
+
+    for (var i = 1; i < rows.length; i++) {
+        points.push(Number(rows[i].getElementsByClassName("points")[0].innerHTML));
+    }
+
+    points.sort((a, b) => b - a);
+    let cutoffPoints = points[4]; // Points of the 5th team
+
+    for (var i = 1; i < rows.length; i++) {
+        let teamPoints = Number(rows[i].getElementsByClassName("points")[0].innerHTML);
+        let remainingGames = 24 - Number(rows[i].getElementsByClassName("games-played")[0].innerHTML);
+        let maxPossiblePoints = teamPoints + (remainingGames * 2); // Assuming 2 points per win
+
+        let clinched = maxPossiblePoints > cutoffPoints ? "Yes" : "No";
+        rows[i].getElementsByClassName("clinched")[0].innerHTML = clinched;
+    }
+}
+            sortTable();
+            tablebrains();
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>
