@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -91,7 +92,7 @@
     font-size: 11px;
   }
   header{
-    margin-top: 50px;
+    margin-top: 60px;
   }
 }
 @media (min-width:860px) {
@@ -315,6 +316,7 @@ function renderCalendar(month, year) {
     const day = document.createElement('div');
     day.textContent = i;
 
+    // Highlight current day
     if (i === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
       day.classList.add('current-date');
     }
@@ -323,17 +325,14 @@ function renderCalendar(month, year) {
 
     // Check if there are matches for this date
     const matches = schedule[dateKey];
-    if (matches) {
+
+    // Ensure 'matches' is an array before calling '.join()'
+    if (Array.isArray(matches)) {
       day.setAttribute('data-matches', matches.join(', '));  // Store all matches for that day
-      day.style.backgroundColor = '#ffeb3b';
+      day.style.backgroundColor = '#ffeb3b';  // Highlight match days
     }
 
-    // Check if the current date is the match day (highlight differently if it's today)
-    if (`${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}` === dateKey) {
-      day.setAttribute('data-matches', matches.join(', '));
-      day.style.backgroundColor = '#fc9d03';  // Highlight today's match with different color
-    }
-
+    // Add the date cell to the calendar
     calendarDates.appendChild(day);
   }
 }
