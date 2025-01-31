@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -520,7 +521,7 @@ setDay.setDate(setDay.getDay());
 
 // Get the dates for the entire current week (Monday to Sunday)
 const dayDates = [];
-for (let i = 0; i < 4; i++) {
+for (let i = -1; i < 3; i++) {
     const date = new Date(startOfWeek);
     date.setDate(startOfWeek.getDate() + i);
     dayDates.push(date.toISOString().split('T')[0]); // Format as 'YYYY-MM-DD'
@@ -528,7 +529,7 @@ for (let i = 0; i < 4; i++) {
 const todayDate = [];
 
 const date1 = new Date(currentDate);
-date1.setDate(currentDate.getDate());
+date1.setDate(currentDate.getDate()-1);
 todayDate.push(date1.toISOString().split('T')[0]); // Format as 'YYYY-MM-DD'
 
 // Prepare the week days object (Monday to Sunday)
