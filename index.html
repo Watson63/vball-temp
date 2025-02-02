@@ -522,7 +522,7 @@ const currentDay= new Date(currentDate);
 currentDay.setDate(currentDate.getDate());
 // Get the start of the current week (Monday)
 const startOfWeek = new Date(currentDate);
-startOfWeek.setDate(currentDate.getDate() - currentDate.getDay()+1); // Adjust to Monday
+startOfWeek.setDate(currentDate.getDate() - currentDate.getDay()+2); // Adjust to Monday
 
 const setDay = new Date(currentDate);
 setDay.setDate(setDay.getDay());
